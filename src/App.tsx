@@ -1,14 +1,13 @@
+import "./App.css";
+import FormPage from "./pages/Form";
+import HomePage from "./pages/Home";
 
-import './App.css'
-import HomePage from './pages/Home'
 function App() {
-  
-
   return (
     <>
-      <HomePage/>
+      <HomePage />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
