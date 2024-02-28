@@ -6,7 +6,7 @@ const FormPage = () => {
 
   return !isFormSubmitted ? (
     <form
-      className=" grid gap-2 w-full "
+      className=" grid gap-2 w-1/3"
       id="form-edit"
       onSubmit={editFormData?.handleSubmit}
       onReset={editFormData?.handleReset}

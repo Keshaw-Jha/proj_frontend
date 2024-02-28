@@ -1,14 +1,13 @@
 import React from "react";
 import FormPage from "../Form";
-import { DialogTitle } from "@mui/material";
+import { Layout } from "../../components/Layout";
 
 export default function Homepage() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-6 rounded-md shadow-md w-1/4 text-center">
-        <DialogTitle className="text-2xl font-bold mb-4">PRAVESH</DialogTitle>
+    <Layout>
+      <div className="w-3/4 flex justify-center">
         <FormPage />
       </div>
-    </div>
+    </Layout>
   );
 }
