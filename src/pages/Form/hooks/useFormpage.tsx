@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { FormikHelpers, useFormik } from "formik";
 import * as yup from "yup";
+import { submitForm } from "../../../api/form-ep";
 
 export const useFormpage = () => {
   const [isFormSubmitted, setFormSubmit] = useState(false);
@@ -12,6 +13,19 @@ export const useFormpage = () => {
     values: FormValues,
     { setSubmitting }: FormikHelpers<FormValues>
   ) => {
+    const { name, phone, email, adhaar, formId, qr } = values;
+
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("phone", phone);
+    formData.append("email", email);
+    formData.append("adhaar", adhaar);
+    formData.append("formId", formId);
+    formData.append("qr", qr);
+
+    const response = await submitForm(formData);
+
+    if (response.stat) console.log(response);
     console.log(values);
     setSubmitting(false);
     setFormSubmit(true);
@@ -24,12 +38,16 @@ export const useFormpage = () => {
     setValues(initialFormValues, false);
   };
 
-  const initialFormValues = {
+  const getInitialFormValues = () => ({
     name: "",
     phone: "",
     email: "",
     adhaar: "",
-  };
+    formId: "",
+    qr: "",
+  });
+
+  const initialFormValues = getInitialFormValues();
 
   const editFormData = useFormik({
     initialValues: initialFormValues,

@@ -1,9 +1,11 @@
-export interface FormData {
+export type FormData = {
+  formId: string;
   name: string;
   email: string;
   phone: string;
   adhaar: string;
-}
+  qr: string;
+};
 
 export interface otpData {
   email: string;
