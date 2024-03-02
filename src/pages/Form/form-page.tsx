@@ -6,7 +6,7 @@ const FormPage = () => {
 
   return !isFormSubmitted ? (
     <form
-      className=" grid gap-2 w-1/3"
+      className=" grid gap-3 min-w-full m-5 mb-0"
       id="form-edit"
       onSubmit={editFormData?.handleSubmit}
       onReset={editFormData?.handleReset}
@@ -20,7 +20,7 @@ const FormPage = () => {
       <TextField {...formSchema.adhaar} onChange={editFormData.handleChange} />
 
       <Button
-        className="mt-2"
+        className="!mt-3 max-w-min justify-self-end"
         type="submit"
         form="form-edit"
         variant="contained"

@@ -1,4 +1,4 @@
-export type FormData = {
+export type HomeFormData = {
   formId: string;
   name: string;
   email: string;

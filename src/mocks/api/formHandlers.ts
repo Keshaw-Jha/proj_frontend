@@ -1,20 +1,17 @@
 import { HttpStatusCode } from "axios";
 import { rest } from "msw";
-
+import { HomeFormData } from "../../model/HomeformData";
 // import { config } from "@/utils/app-config";
 
 // const baseURL = config.env.API_BASE_URL;
 
 export const handlers = [
   rest.post(`/submitForm`, async (req, res, ctx) => {
-    console.log("req - ", req);
+    const resObj:HomeFormData = await req.json();
+    resObj.formId = "1234";
     return res(
       ctx.status(HttpStatusCode.Ok),
-      ctx.json({
-        data: {
-          message: "form submit api received",
-        },
-      })
+      ctx.json(resObj)
     );
   }),
 ];
