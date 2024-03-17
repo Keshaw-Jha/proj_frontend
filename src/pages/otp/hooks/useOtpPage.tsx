@@ -2,10 +2,11 @@ import { useState } from "react";
 
 import { FormikHelpers, useFormik } from "formik";
 import * as yup from "yup";
+import { HomeFormData } from "../../../model/HomeformData";
 
-export const useOtpPage = () => {
+export const useOtpPage = (formValue: HomeFormData) => {
   const [isOtpSubmitted, setOtpSubmit] = useState(false);
-  const [formId, setFormId] = useState("");
+  const [qrData, setQrData] = useState({});
 
   type FormValues = typeof initialOtpValues;
 
@@ -13,8 +14,12 @@ export const useOtpPage = () => {
     values: FormValues,
     { setSubmitting }: FormikHelpers<FormValues>
   ) => {
-    console.log(values);
-    console.log(formId);
+    const otpObj = {
+      formId: formValue.formId,
+      otp: values.otp,
+    };
+    console.log(otpObj);
+    setQrData(values);
     setSubmitting(false);
     setOtpSubmit(true);
   };
@@ -57,6 +62,6 @@ export const useOtpPage = () => {
     editOtpFormData,
     formSchema,
     isOtpSubmitted,
-    setFormId,
+    qrData,
   };
 };

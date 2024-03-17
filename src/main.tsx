@@ -5,7 +5,8 @@ import "./index.css";
 import { worker } from "./mocks/api/browser.ts";
 
 async function enableMocking() {
-  return worker.start();
+  if (process.env.API_URL == "") return worker.start();
+  return;
 }
 
 enableMocking().then(() => {

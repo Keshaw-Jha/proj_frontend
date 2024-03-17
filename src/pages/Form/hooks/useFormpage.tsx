@@ -2,8 +2,11 @@ import { useState } from "react";
 
 import { FormikHelpers, useFormik } from "formik";
 import * as yup from "yup";
-import { submitForm } from "../../../api/form-ep";
-import { HomeFormData } from "../../../model/HomeformData";
+import { submitForm } from "../../../api/api-ep";
+import {
+  HomeFormData,
+  getInitialFormValues,
+} from "../../../model/HomeformData";
 
 export const useFormpage = () => {
   const [isFormSubmitted, setFormSubmit] = useState(false);
@@ -14,11 +17,17 @@ export const useFormpage = () => {
     values: FormValues,
     { setSubmitting }: FormikHelpers<FormValues>
   ) => {
-    const response = await submitForm(values as HomeFormData);
-    if (response) console.log("res - ",response);
-    console.log(values);
-    setSubmitting(false);
-    setFormSubmit(true);
+    await submitForm(values as HomeFormData)
+      .then((data) => {
+        console.log(data);
+        editFormData.setValues({ ...data }).then(() => {
+          setFormSubmit(true);
+        });
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setSubmitting(false);
+      });
   };
 
   const handleReset = (
@@ -27,15 +36,6 @@ export const useFormpage = () => {
   ) => {
     setValues(initialFormValues, false);
   };
-
-  const getInitialFormValues = () => ({
-    name: "",
-    phone: "",
-    email: "",
-    adhaar: "",
-    formId: "",
-    qr: "",
-  });
 
   const initialFormValues = getInitialFormValues();
 

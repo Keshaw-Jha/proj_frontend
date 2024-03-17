@@ -8,9 +8,17 @@ export type HomeFormData = {
 };
 
 export interface otpData {
-  email: string;
-  phone: string;
+  formId: string;
   otp: string;
 }
 
 export type ModalState = "home" | "otp" | "qr" | "none";
+
+export const getInitialFormValues = () => ({
+  name: "",
+  phone: "",
+  email: "",
+  adhaar: "",
+  formId: "",
+  qr: "",
+});
