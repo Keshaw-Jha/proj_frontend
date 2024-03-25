@@ -1,13 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getQr } from "../../../api/api-ep";
 
-export default function useQrPage() {
-  const [qrImg, setQrImg] = useState("");
-  const getQr = async (formId: string) => {
-    console.log(formId);
-    setQrImg(formId);
-  };
+export const useQrPage = (formId: string) => {
+  const [qr, setQr] = useState("");
+
+  useEffect(() => {
+    const fetchQr = async () => {
+      try {
+        const resFormObject = await getQr(formId);
+
+        setQr(resFormObject);
+      } catch (error) {
+        console.error("Error fetching QR code:", error);
+      }
+    };
+
+    fetchQr(); // Call fetchQr when component mounts
+  }, [formId]); // Run effect whenever formId changes
+
   return {
-    getQr,
-    qrImg,
+    qr,
   };
-}
+};

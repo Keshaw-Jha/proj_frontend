@@ -10,24 +10,21 @@ import {
 
 export const useFormpage = () => {
   const [isFormSubmitted, setFormSubmit] = useState(false);
-
   type FormValues = typeof initialFormValues;
 
   const handleSubmit = async (
     values: FormValues,
     { setSubmitting }: FormikHelpers<FormValues>
   ) => {
-    await submitForm(values as HomeFormData)
-      .then((data) => {
-        console.log(data);
-        editFormData.setValues({ ...data }).then(() => {
-          setFormSubmit(true);
-        });
-      })
-      .catch((err) => console.log(err))
-      .finally(() => {
-        setSubmitting(false);
-      });
+    try {
+      const responseData = await submitForm(values as HomeFormData);
+      await editFormData.setValues({ ...responseData.data });
+      setFormSubmit(true);
+    } catch (err) {
+      console.log("error occured -", err);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleReset = (

@@ -3,10 +3,10 @@ import { useState } from "react";
 import { FormikHelpers, useFormik } from "formik";
 import * as yup from "yup";
 import { HomeFormData } from "../../../model/HomeformData";
+import { submitOtp } from "../../../api/api-ep";
 
 export const useOtpPage = (formValue: HomeFormData) => {
   const [isOtpSubmitted, setOtpSubmit] = useState(false);
-  const [qrData, setQrData] = useState({});
 
   type FormValues = typeof initialOtpValues;
 
@@ -14,14 +14,16 @@ export const useOtpPage = (formValue: HomeFormData) => {
     values: FormValues,
     { setSubmitting }: FormikHelpers<FormValues>
   ) => {
-    const otpObj = {
-      formId: formValue.formId,
-      otp: values.otp,
-    };
-    console.log(otpObj);
-    setQrData(values);
+    try {
+      const tempObj = { formId: formValue.formId, otp: values.otp };
+      const response = await submitOtp(tempObj);
+      if (response) {
+        setOtpSubmit(true);
+      } else throw new Error("otp verification fails");
+    } catch (err) {
+      console.log(err);
+    }
     setSubmitting(false);
-    setOtpSubmit(true);
   };
 
   const handleReset = (
@@ -62,6 +64,5 @@ export const useOtpPage = (formValue: HomeFormData) => {
     editOtpFormData,
     formSchema,
     isOtpSubmitted,
-    qrData,
   };
 };
