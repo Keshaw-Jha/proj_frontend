@@ -4,7 +4,9 @@ function Sidebar() {
   return (
     <aside id="sidebar">
       <div className="sidebar-title">
-        <div className="text-3xl">PRAVESH</div>
+        <div className="">
+          <img src="../../public/assets/pravesh_logo1.2.png" alt="" />
+        </div>
       </div>
 
       <ul className="sidebar-list flex flex-col gap-4 mt-5">
