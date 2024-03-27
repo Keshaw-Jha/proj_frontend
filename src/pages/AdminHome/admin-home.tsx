@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Sidebar from "../../components/sliderbar";
 import DashboardPage from "../Dashboard";
+import QrScanner from "../qr-scanner";
 
 function AdminHomePage() {
   return (
@@ -12,10 +13,10 @@ function AdminHomePage() {
         <div className="bg-[#A0153E] p-4 font-bold text-xl text-[#FFFFFF] rounded-t-lg">
           Dashboard
         </div>
-        <div className="flex-1 p-5 overflow-y-auto text-[#FFFFFF] bg-gradient-to-r from-[#5D0E41] to-[#00224D]">
+        <div className="flex-1 p-6 overflow-y-auto text-[#FFFFFF] bg-gradient-to-r from-[#5D0E41] to-[#00224D]">
           <Routes>
             <Route path="/" element={<DashboardPage />} />
-            <Route path="*" element={<DashboardPage />} />
+            <Route path="/scanner" element={<QrScanner />} />
           </Routes>
         </div>
         <div className="p-4 text-[#FFFFFF] bg-[#00224D] rounded-b-lg text-center">

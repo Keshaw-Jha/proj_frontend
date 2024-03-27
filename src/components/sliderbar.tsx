@@ -23,31 +23,24 @@ function SidebarItem({ icon, text, link }: SidebarItemProps) {
 // Sidebar component
 function Sidebar() {
   return (
-    <aside id="sidebar" className="font-semibold h-full overflow-y-auto text-base">
+    <aside
+      id="sidebar"
+      className="font-semibold h-full overflow-y-auto text-base">
       <div className="w-full">
         <img
-          src="../../public/assets/pravesh_logo1.2.png"
+          src="/assets/pravesh_logo1.2.png"
           alt=""
           className="w-1/2 mx-auto mt-2"
         />
       </div>
 
       <ul className="sidebar-list flex flex-col mt-5">
-        <SidebarItem
-          icon={<DashboardIcon />}
-          text="Dashboard"
-          link="/admin/dashboard"
-        />
+        <SidebarItem icon={<DashboardIcon />} text="Dashboard" link="/admin/" />
         <SidebarItem
           icon={<QrCodeScannerIcon />}
           text="Scan"
-          link="/admin/scan"
+          link="/admin/scanner"
         />
-        <SidebarItem text="Categories" link="" />
-        <SidebarItem text="Customers" link="" />
-        <SidebarItem text="Inventory" link="" />
-        <SidebarItem text="Reports" link="" />
-        <SidebarItem text="Setting" link="" />
       </ul>
     </aside>
   );
