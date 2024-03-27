@@ -8,7 +8,7 @@ function AdminHomePage() {
       <div className="w-[264px] flex-shrink-0  text-[#FFFFFF]">
         <Sidebar />
       </div>
-      <div className="flex flex-col flex-1 m-3">
+      <div className="flex flex-col flex-1 m-2">
         <div className="bg-[#A0153E] p-4 font-bold text-xl text-[#FFFFFF] rounded-t-lg">
           Dashboard
         </div>
