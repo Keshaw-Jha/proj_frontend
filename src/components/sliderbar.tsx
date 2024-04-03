@@ -1,39 +1,48 @@
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
 import DescriptionRoundedIcon from "@mui/icons-material/DescriptionRounded";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 // Define types for SidebarItem props
 type SidebarItemProps = {
   icon?: JSX.Element;
   text: string;
   link: string;
-  handleHeading: (heading: string) => boolean;
+  isActive: boolean;
 };
 
 // Reusable SidebarItem component
-function SidebarItem({ icon, text, link, handleHeading }: SidebarItemProps) {
+function SidebarItem({ icon, text, link, isActive }: SidebarItemProps) {
   return (
-    <li className="p-4 hover:bg-white hover:text-[#FF204E] flex items-center hover:text-lg hover:font-bold">
+    <li
+      className={`p-4 flex items-center hover:text-lg hover:font-bold  ${
+        isActive ? "bg-white text-[#FF204E] text-lg font-bold" : ""
+      }`}>
       {icon}
-      <Link
-        to={link}
-        className="ml-2"
-        onClick={() => {
-          handleHeading(text);
-        }}>
+      <Link to={link} className="ml-2">
         {text}
       </Link>
     </li>
   );
 }
 
-interface SidebarProps {
-  handleHeading: (heading: string) => boolean;
-}
-
 // Sidebar component
-const Sidebar: React.FC<SidebarProps> = ({ handleHeading }) => {
+const Sidebar = () => {
+  const location = useLocation();
+  const pathname = location.pathname;
+  const [activeLink, setActiveLink] = useState("");
+
+  useEffect(() => {
+    if (pathname === "/admin") {
+      setActiveLink("/admin");
+    } else if (pathname === "/admin/scan") {
+      setActiveLink("/admin/scan");
+    } else if (pathname === "/admin/records") {
+      setActiveLink("/admin/records");
+    }
+  }, [pathname]);
+
   return (
     <aside
       id="sidebar"
@@ -51,19 +60,19 @@ const Sidebar: React.FC<SidebarProps> = ({ handleHeading }) => {
           icon={<DashboardIcon />}
           text="Dashboard"
           link="/admin"
-          handleHeading={handleHeading}
+          isActive={activeLink === "/admin"}
         />
         <SidebarItem
           icon={<QrCodeScannerIcon />}
           text="Scan"
           link="/admin/scan"
-          handleHeading={handleHeading}
+          isActive={activeLink === "/admin/scan"}
         />
         <SidebarItem
           icon={<DescriptionRoundedIcon />}
           text="Records"
           link="/admin/records"
-          handleHeading={handleHeading}
+          isActive={activeLink === "/admin/records"}
         />
       </ul>
     </aside>

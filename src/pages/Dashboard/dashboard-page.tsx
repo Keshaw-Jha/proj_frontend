@@ -4,7 +4,7 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import DoughnutChart from "./components/doughnut-chart";
 
-function DashboardPage() {
+const DashboardPage = () => {
   return (
     <div className="flex flex-col h-full gap-3">
       <div className="grid md:grid-cols-3 gap-10 ">
@@ -32,6 +32,6 @@ function DashboardPage() {
       </div>
     </div>
   );
-}
+};
 
 export default DashboardPage;
