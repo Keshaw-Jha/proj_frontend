@@ -2,20 +2,27 @@ import { Button } from "@mui/material";
 import { useQrPage } from "./hooks/useQrPage";
 
 interface Props {
-  formId: string;
+  ticketId: string;
 }
 
-const QrPage = ({ formId }: Props) => {
-  const { qr } = useQrPage(formId);
+const QrPage = ({ ticketId }: Props) => {
+  const { qr } = useQrPage(ticketId);
   return (
     qr !== "" && (
-      <div className="flex flex-col w-full items-center gap-3 m-3">
-        <img
-          src={qr}
-          alt="qr-code"
-          className="qr-code img-thumbnail img-responsive w-3/4"
-        />
-        <Button variant="contained">Download</Button>
+      <div className="flex flex-row  items-center justify-center gap-5 my-10 ">
+        <img src="public\assets\Tutto Ricco - Making a Difference.png" alt="" />
+        <div className="flex flex-col gap-3">
+          <img
+            src={qr}
+            alt="qr-code"
+            className="qr-code img-thumbnail img-responsive "
+          />
+          <div>
+            <Button variant="contained" className="w-min !bg-[#A0153E]">
+              Download
+            </Button>
+          </div>
+        </div>
       </div>
     )
   );

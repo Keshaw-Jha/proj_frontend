@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { getQr } from "../../../api/api-ep";
 
-export const useQrPage = (formId: string) => {
+export const useQrPage = (ticketId: string) => {
   const [qr, setQr] = useState("");
 
   useEffect(() => {
     const fetchQr = async () => {
       try {
-        const resFormObject = await getQr(formId);
+        const resFormObject = await getQr(ticketId);
 
         setQr(resFormObject);
       } catch (error) {
@@ -16,7 +16,7 @@ export const useQrPage = (formId: string) => {
     };
 
     fetchQr(); // Call fetchQr when component mounts
-  }, [formId]); // Run effect whenever formId changes
+  }, [ticketId]); // Run effect whenever ticketId changes
 
   return {
     qr,

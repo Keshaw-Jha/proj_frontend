@@ -18,18 +18,15 @@ function createData(
   name: string,
   calories: number,
   fat: number,
-  carbs: number,
-  protein: number,
-  price: number
+  carbs: number
 ) {
   return {
     name,
     calories,
     fat,
     carbs,
-    protein,
-    price,
-    history: [
+
+    details: [
       {
         date: "2020-01-05",
         customerId: "11091700",
@@ -75,7 +72,6 @@ function Row(props: { row: ReturnType<typeof createData> }) {
         {custTableCell(row.calories)}
         {custTableCell(row.fat)}
         {custTableCell(row.carbs)}
-        {custTableCell(row.protein)}
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -94,16 +90,13 @@ function Row(props: { row: ReturnType<typeof createData> }) {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {row.history.map((historyRow) => (
+                  {row.details.map((historyRow) => (
                     <TableRow key={historyRow.date}>
                       <TableCell component="th" scope="row">
                         {historyRow.date}
                       </TableCell>
                       <TableCell>{historyRow.customerId}</TableCell>
                       <TableCell align="right">{historyRow.amount}</TableCell>
-                      <TableCell align="right">
-                        {Math.round(historyRow.amount * row.price * 100) / 100}
-                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

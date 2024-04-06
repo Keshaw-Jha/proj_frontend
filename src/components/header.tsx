@@ -1,15 +1,17 @@
-import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 
 const Header = () => {
   return (
-    <AppBar position="static" className="!bg-orange-500 h-20">
-      <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1}} >
+    <AppBar position="static" className="!bg-[#FF204E] h-20 pt-2">
+      <Toolbar className="flex items-center justify-center gap-4">
+        <img src="public\assets\pravesh_logo1.2.png" alt="" width={"60px"} />
+        <h3
+          className="text-4xl font-semibold"
+          // style={{ fontFamily: "'Pixelify Sans', sans-serif" }}
+        >
           PRAVESH
-        </Typography>
+        </h3>
       </Toolbar>
     </AppBar>
   );

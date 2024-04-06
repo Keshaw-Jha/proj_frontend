@@ -5,23 +5,19 @@ const TableHeadLabels: {
   align: "left" | "center" | "right" | "justify" | "inherit" | undefined;
 }[] = [
   {
-    label: "Dessert (100g serving)",
+    label: "Name",
     align: "left",
   },
   {
-    label: "Calories",
+    label: "Phone",
     align: "right",
   },
   {
-    label: "Fat (g)",
+    label: "Entry",
     align: "right",
   },
   {
-    label: "Carbs (g)",
-    align: "right",
-  },
-  {
-    label: "Protein (g)",
+    label: "Exit",
     align: "right",
   },
 ];

@@ -46,7 +46,7 @@ const Sidebar = () => {
   return (
     <aside
       id="sidebar"
-      className="font-semibold h-full overflow-y-auto text-base">
+      className="font-semibold h-full overflow-y-auto text-base flex flex-col">
       <div className="w-full">
         <img
           src="/assets/pravesh_logo1.2.png"
@@ -75,6 +75,13 @@ const Sidebar = () => {
           isActive={activeLink === "/admin/records"}
         />
       </ul>
+      <div className="flex flex-1 items-end">
+        <img
+          src="public\assets\Brazuca - Sitting.png"
+          alt=""
+          className="w-full h-auto mx-auto"
+        />
+      </div>
     </aside>
   );
 };

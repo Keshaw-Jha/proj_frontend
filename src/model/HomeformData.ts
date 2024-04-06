@@ -1,5 +1,5 @@
 export type HomeFormData = {
-  formId: string;
+  ticketId: string;
   name: string;
   email: string;
   phone: string;
@@ -8,7 +8,7 @@ export type HomeFormData = {
 };
 
 export interface otpData {
-  formId: string;
+  ticketId: string;
   otp: string;
 }
 
@@ -19,6 +19,6 @@ export const getInitialFormValues = () => ({
   phone: "",
   email: "",
   adhaar: "",
-  formId: "",
+  ticketId: "",
   qr: "",
 });

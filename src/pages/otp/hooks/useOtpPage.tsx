@@ -15,7 +15,7 @@ export const useOtpPage = (formValue: HomeFormData) => {
     { setSubmitting }: FormikHelpers<FormValues>
   ) => {
     try {
-      const tempObj = { formId: formValue.formId, otp: values.otp };
+      const tempObj = { ticketId: formValue.ticketId, otp: values.otp };
       const response = await submitOtp(tempObj);
       if (response) {
         setOtpSubmit(true);
@@ -34,7 +34,7 @@ export const useOtpPage = (formValue: HomeFormData) => {
   };
 
   const initialOtpValues = {
-    formId: "",
+    ticketId: "",
     otp: "",
   };
 

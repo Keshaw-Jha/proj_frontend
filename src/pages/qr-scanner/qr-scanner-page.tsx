@@ -31,7 +31,7 @@ function QrScanner() {
             {ticketDetails == "" ? (
               <AccountCircleIcon className="!text-9xl" />
             ) : (
-              <div>{ticketDetails}</div>
+              <div>{JSON.stringify(ticketDetails)}</div>
             )}
           </div>
           <div className="item-center justify-center flex p-3">

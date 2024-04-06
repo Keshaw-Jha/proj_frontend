@@ -27,9 +27,9 @@ export const submitOtp = async (formData: otpData) => {
   }
 };
 
-export const getQr = async (formId: string) => {
+export const getQr = async (ticketId: string) => {
   try {
-    const qrCode = await axios.post(`${queryConst.getQr}`, { data: formId });
+    const qrCode = await axios.post(`${queryConst.getQr}`, { data: ticketId });
     if (qrCode) {
       return qrCode.data.data.qr;
     } else {

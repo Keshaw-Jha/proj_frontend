@@ -10,22 +10,30 @@ interface props {
 const OtpPage = ({ formValue }: props) => {
   const { editOtpFormData, formSchema, isOtpSubmitted } = useOtpPage(formValue);
   return !isOtpSubmitted ? (
-    <form
-      className=" grid gap-2 w-full"
-      id="form-edit"
-      onSubmit={editOtpFormData.handleSubmit}
-      onReset={editOtpFormData?.handleReset}>
-      <TextField {...formSchema.otp} onChange={editOtpFormData.handleChange} />
-      <Button
-        className="mt-2 max-w-min justify-self-end"
-        type="submit"
-        form="form-edit"
-        variant="contained">
-        Submit
-      </Button>
-    </form>
+    <div className="flex flex-row gap-5 m-10 grow justify-center items-center">
+      <img src="public\assets\Happy Bunch - Chat.png" alt="" />
+      <form
+        className=" flex flex-col w-full gap-3"
+        id="form-edit"
+        onSubmit={editOtpFormData.handleSubmit}
+        onReset={editOtpFormData?.handleReset}>
+        <TextField
+          {...formSchema.otp}
+          onChange={editOtpFormData.handleChange}
+        />
+        <div className="flex justify-end">
+          <Button
+            className="w-min !bg-[#A0153E]"
+            type="submit"
+            form="form-edit"
+            variant="contained">
+            Submit
+          </Button>
+        </div>
+      </form>
+    </div>
   ) : (
-    <QrPage formId={formValue.formId} />
+    <QrPage ticketId={formValue.ticketId} />
   );
 };
 

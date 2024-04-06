@@ -8,7 +8,7 @@ import { HomeFormData } from "../../model/HomeformData";
 export const handlers = [
   rest.post(`/submitForm`, async (req, res, ctx) => {
     const resObj: HomeFormData = await req.json();
-    resObj.formId = "1234";
+    resObj.ticketId = "1234";
     return res(ctx.status(HttpStatusCode.Ok), ctx.json(resObj));
   }),
   rest.get(`/`, async (req, res, ctx) => {
