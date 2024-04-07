@@ -3,33 +3,49 @@ import BookOnlineIcon from "@mui/icons-material/BookOnline";
 import GroupsIcon from "@mui/icons-material/Groups";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import DoughnutChart from "./components/doughnut-chart";
+import useDashboard from "./hooks/useDashboard";
+import HashLoader from "react-spinners/HashLoader";
 
 const DashboardPage = () => {
+  const { loadingStatus, dashboardStats, statsStatus } = useDashboard();
+
   return (
-    <div className="flex flex-col h-full gap-3">
-      <div className="grid md:grid-cols-3 gap-10 ">
-        <DashboardCard
-          title={"Ticket's Booked"}
-          value={"1.5k"}
-          icon={<BookOnlineIcon className="!text-8xl" />}
-        />
-        <DashboardCard
-          title={"Active Count"}
-          value={"250"}
-          icon={<GroupsIcon className="!text-8xl" />}
-        />
-        <DashboardCard
-          title={"Total Exit's"}
-          value={"750"}
-          icon={<ExitToAppIcon className="!text-8xl" />}
-        />
-      </div>
-      <div className="h-full flex flex-row">
-        <div className="w-1/2">1</div>
-        <div className="flex-1">
-          <DoughnutChart />
+    <div className="h-full flex-1">
+      {loadingStatus === "error" && <div>error</div>}
+
+      {loadingStatus === "loading" && (
+        <div className="flex-1 h-full flex justify-center items-center">
+          <HashLoader color="#ffc9af" />
         </div>
-      </div>
+      )}
+
+      {loadingStatus === "success" && statsStatus === "success" && (
+        <div className="flex flex-col h-full gap-3">
+          <div className="grid md:grid-cols-3 gap-10 ">
+            <DashboardCard
+              title={"Ticket's Booked"}
+              value={dashboardStats?.ticketsBooked || "0"}
+              icon={<BookOnlineIcon className="!text-8xl" />}
+            />
+            <DashboardCard
+              title={"Active Count"}
+              value={dashboardStats?.activeUsers || "0"}
+              icon={<GroupsIcon className="!text-8xl" />}
+            />
+            <DashboardCard
+              title={"Total Exit's"}
+              value={dashboardStats?.totalExits || "0"}
+              icon={<ExitToAppIcon className="!text-8xl" />}
+            />
+          </div>
+          <div className="h-full flex flex-row">
+            <div className="w-1/2">1</div>
+            <div className="flex-1">
+              <DoughnutChart />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

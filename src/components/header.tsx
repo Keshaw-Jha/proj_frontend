@@ -3,9 +3,9 @@ import Toolbar from "@mui/material/Toolbar";
 
 const Header = () => {
   return (
-    <AppBar position="static" className="!bg-[#FF204E] h-20 pt-2">
+    <AppBar position="static" className="!bg-[#FF204E] h-20 pt-2 z-10">
       <Toolbar className="flex items-center justify-center gap-4">
-        <img src="public\assets\pravesh_logo1.2.png" alt="" width={"60px"} />
+        <img src="assets\pravesh_logo1.2.png" alt="" width={"60px"} />
         <h3
           className="text-4xl font-semibold"
           // style={{ fontFamily: "'Pixelify Sans', sans-serif" }}

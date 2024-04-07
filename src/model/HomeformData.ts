@@ -5,6 +5,9 @@ export type HomeFormData = {
   phone: string;
   adhaar: string;
   qr: string;
+  entryAt?: Date;
+  exitAt?: Date;
+  createdAt?: Date;
 };
 
 export interface otpData {
@@ -22,3 +25,9 @@ export const getInitialFormValues = () => ({
   ticketId: "",
   qr: "",
 });
+
+export type DashboardStats = {
+  activeUsers: number;
+  ticketsBooked: number;
+  totalExits: number;
+};

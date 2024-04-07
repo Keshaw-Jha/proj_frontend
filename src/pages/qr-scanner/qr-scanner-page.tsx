@@ -17,7 +17,7 @@ function QrScanner() {
         <div className=" col-span-4 m-8 flex flex-col justify-center items-center">
           <div className="w-[80%] p-3 m-3 rounded-lg bg-[#ffc9af] ">
             <Scanner
-              enabled={true}
+              enabled={false}
               onResult={(text) => {
                 handleQrScan(text);
               }}
@@ -34,7 +34,7 @@ function QrScanner() {
               <div>{JSON.stringify(ticketDetails)}</div>
             )}
           </div>
-          <div className="item-center justify-center flex p-3">
+          <div className="item-center justify-center flex p-3 gap-2 flex-row ">
             <Button
               variant="contained"
               //   className="!bg-[#A0153E]"

@@ -1,10 +1,10 @@
 import axios, { HttpStatusCode } from "axios";
 import { HomeFormData, otpData } from "../model/HomeformData";
-import { queryConst } from "./queryConsts";
+import { QueryConst } from "./queryConsts";
 
 export const submitForm = async (formData: HomeFormData) => {
   try {
-    const response = await axios.post(queryConst.submitForm, formData);
+    const response = await axios.post(QueryConst.submitForm, formData);
     if (response.status === HttpStatusCode.Created) {
       return response.data;
     } else {
@@ -18,7 +18,7 @@ export const submitForm = async (formData: HomeFormData) => {
 
 export const submitOtp = async (formData: otpData) => {
   try {
-    const response = await axios.post(`${queryConst.submitOtp}`, {
+    const response = await axios.post(`${QueryConst.submitOtp}`, {
       data: formData,
     });
     if (response.status === HttpStatusCode.Ok) return response.data;
@@ -29,7 +29,7 @@ export const submitOtp = async (formData: otpData) => {
 
 export const getQr = async (ticketId: string) => {
   try {
-    const qrCode = await axios.post(`${queryConst.getQr}`, { data: ticketId });
+    const qrCode = await axios.post(`${QueryConst.getQr}`, { data: ticketId });
     if (qrCode) {
       return qrCode.data.data.qr;
     } else {

@@ -1,7 +1,7 @@
 type DashboardCardProps = {
   icon?: JSX.Element;
   title: string;
-  value: string;
+  value: string | number;
 };
 
 // Reusable SidebarItem component

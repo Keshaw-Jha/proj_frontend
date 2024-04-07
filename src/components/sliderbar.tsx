@@ -75,13 +75,6 @@ const Sidebar = () => {
           isActive={activeLink === "/admin/records"}
         />
       </ul>
-      <div className="flex flex-1 items-end">
-        <img
-          src="public\assets\Brazuca - Sitting.png"
-          alt=""
-          className="w-full h-auto mx-auto"
-        />
-      </div>
     </aside>
   );
 };

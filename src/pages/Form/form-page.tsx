@@ -5,7 +5,7 @@ const FormPage = () => {
   const { editFormData, formSchema, isFormSubmitted } = useFormpage();
   return !isFormSubmitted ? (
     <div className="flex flex-row gap-5 m-10 grow">
-      <img src="public\assets\Happy Bunch - Standing.png" alt="" />
+      <img src="assets\Happy Bunch - Standing.png" alt="" />
       <form
         className=" grid gap-3 w-2/3"
         id="form-edit"
@@ -15,20 +15,31 @@ const FormPage = () => {
           {...formSchema.name}
           className="rounded-md p-2"
           onChange={editFormData.handleChange}
+          color="secondary"
         />
 
-        <TextField {...formSchema.email} onChange={editFormData.handleChange} />
+        <TextField
+          {...formSchema.email}
+          onChange={editFormData.handleChange}
+          color="secondary"
+        />
 
-        <TextField {...formSchema.phone} onChange={editFormData.handleChange} />
+        <TextField
+          {...formSchema.phone}
+          onChange={editFormData.handleChange}
+          color="secondary"
+        />
 
         <TextField
           {...formSchema.adhaar}
           onChange={editFormData.handleChange}
+          color="secondary"
         />
 
         <Button
-          className="!mt-3 max-w-min justify-self-end !bg-[#A0153E]"
+          className=" max-w-min justify-self-end !bg-[#A0153E]"
           type="submit"
+          size="small"
           form="form-edit"
           variant="contained">
           Submit

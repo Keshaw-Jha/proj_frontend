@@ -20,6 +20,7 @@ const OtpPage = ({ formValue }: props) => {
         <TextField
           {...formSchema.otp}
           onChange={editOtpFormData.handleChange}
+          color="secondary"
         />
         <div className="flex justify-end">
           <Button

@@ -37,8 +37,8 @@ function AdminHomePage() {
             <Route path="/records" element={<AdminTable />} />
           </Routes>
         </div>
-        <div className="p-4 text-[#FFFFFF] bg-[#00224D] rounded-b-lg text-center" style={{ fontFamily: "'Pixelify Sans', sans-serif" }}>
-          Made with 💖 @Chengra-Mengra-2024
+        <div className="p-4 text-[#FFFFFF] bg-[#00224D] rounded-b-lg  text-center" style={{ fontFamily: "'Pixelify Sans', sans-serif" }}>
+          Made with ❤️ @Chengra-Mengra-2024
         </div>
       </div>
     </div>
