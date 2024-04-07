@@ -1,13 +1,21 @@
 import { PieChart, Pie, ResponsiveContainer, Cell } from "recharts";
+import { DashboardStats } from "../../../model/HomeformData";
 
-const data = [
-  { name: "Group A", value: 400, fill: "#8884d8" },
-  { name: "Group B", value: 300, fill: "#82ca9d" },
-  { name: "Group C", value: 300, fill: "#ffc658" },
-  { name: "Group D", value: 200, fill: "#ff7300" },
-];
+interface DoughnutChartProps {
+  dashboardStats: DashboardStats | undefined;
+}
 
-const DoughnutChart = () => {
+const DoughnutChart: React.FC<DoughnutChartProps> = ({ dashboardStats }) => {
+  const data = [
+    {
+      name: "Active",
+      value: dashboardStats?.activeUsers,
+      fill: "#8884d8",
+    },
+    { name: "Exited", value: dashboardStats?.totalExits, fill: "#ff7300" },
+    { name: "Unvisited", value: dashboardStats?.unvisited, fill: "#ffc658" },
+  ];
+
   return (
     <div className="h-full">
       <div className="flex flex-row  items-center h-[90%]">

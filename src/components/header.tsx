@@ -7,10 +7,9 @@ const Header = () => {
       <Toolbar className="flex items-center justify-center gap-4">
         <img src="assets\pravesh_logo1.2.png" alt="" width={"60px"} />
         <h3
-          className="text-4xl font-semibold"
-          // style={{ fontFamily: "'Pixelify Sans', sans-serif" }}
-        >
-          PRAVESH
+          className="text-6xl font-semibold"
+          style={{ fontFamily: "yatra one" }}>
+          प्रVEश : entry SYस्टUMM
         </h3>
       </Toolbar>
     </AppBar>

@@ -30,4 +30,5 @@ export type DashboardStats = {
   activeUsers: number;
   ticketsBooked: number;
   totalExits: number;
+  unvisited: number;
 };

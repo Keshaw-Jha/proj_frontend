@@ -41,7 +41,7 @@ const DashboardPage = () => {
           <div className="h-full flex flex-row">
             <div className="w-1/2">1</div>
             <div className="flex-1">
-              <DoughnutChart />
+              <DoughnutChart dashboardStats={dashboardStats} />
             </div>
           </div>
         </div>
