@@ -12,6 +12,7 @@ export const handlers = [
     return res(ctx.status(HttpStatusCode.Ok), ctx.json(resObj));
   }),
   rest.get(`/`, async (req, res, ctx) => {
+    console.log(req);
     return res(ctx.status(HttpStatusCode.Ok));
   }),
 ];
