@@ -1,7 +1,7 @@
 export const base_url = process.env.API_URL;
 
 export const QueryConst = {
-  submitForm: `https://proj-backend.vercel.app/submitForm`,
+  submitForm: `${base_url}/submitForm`,
   submitOtp: `${base_url}/submitOtp`,
   getQr: `${base_url}/getQr`,
   getAllTickets: `${base_url}/getTickets`,
