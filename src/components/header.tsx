@@ -9,7 +9,7 @@ const Header = () => {
         <h3
           className="text-6xl font-semibold"
           style={{ fontFamily: "yatra one" }}>
-          प्रVEश : entry SYस्टUMM
+          प्रVEश SYस्टUM
         </h3>
       </Toolbar>
     </AppBar>
