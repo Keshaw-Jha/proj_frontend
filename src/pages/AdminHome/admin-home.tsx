@@ -10,11 +10,11 @@ function AdminHomePage() {
   const { loadingStatus, heading } = useAdminHome();
 
   return (
-    <div className="flex h-screen bg-[#FF204E]">
-      <div className="w-[264px] flex-shrink-0  text-[#FFFFFF]">
+    <div className="flex flex-col md:flex-row h-screen bg-[#FF204E] overflow-scroll md:overflow-hidden">
+      <div className="md:w-[264px] flex-shrink-0  text-[#FFFFFF]">
         <Sidebar />
       </div>
-      <div className="flex flex-col flex-1 m-2">
+      <div className="flex flex-col flex-1 m-2 md:overflow-x-auto">
         <div className="bg-[#A0153E] p-4 font-bold text-xl text-[#FFFFFF] rounded-t-lg">
           {heading}
         </div>

@@ -9,7 +9,7 @@ interface wrapperComponent {
 
 export const Layout: React.FC<wrapperComponent> = ({ children }) => {
   return (
-    <div className="flex flex-col h-screen text-center">
+    <div className="flex flex-col h-screen text-center overflow-scroll md:overflow-hidden">
       <Header />
       <CustomParticles />
       <div className="grow flex items-center justify-center bg-gradient-to-r from-[#5D0E41] to-[#00224D] ">

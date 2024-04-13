@@ -10,11 +10,11 @@ const Header = () => {
   };
 
   return (
-    <AppBar position="static" className="!bg-[#FF204E] h-20 pt-2 z-10">
+    <AppBar position="static" className="!bg-[#FF204E] lg:h-20 lg:pt-2 z-10">
       <Toolbar className="flex items-center justify-center gap-4">
         <img src="assets\pravesh_logo1.2.png" alt="" width={"60px"} />
         <h3
-          className="text-6xl font-semibold"
+          className="text-3xl md:text-6xl font-semibold"
           style={{ fontFamily: "yatra one" }}>
           प्रVEश SYस्टUM
         </h3>

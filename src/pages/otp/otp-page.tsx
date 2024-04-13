@@ -11,7 +11,11 @@ const OtpPage = ({ formValue }: props) => {
   const { editOtpFormData, formSchema, isOtpSubmitted } = useOtpPage(formValue);
   return !isOtpSubmitted ? (
     <div className="flex flex-row gap-5 m-10 grow justify-center items-center">
-      <img src="public\assets\Happy Bunch - Chat.png" alt="" />
+      <img
+        src="public\assets\Happy Bunch - Chat.png"
+        alt=""
+        className="hidden md:block"
+      />
       <form
         className=" flex flex-col w-full gap-3"
         id="form-edit"
@@ -22,7 +26,7 @@ const OtpPage = ({ formValue }: props) => {
           onChange={editOtpFormData.handleChange}
           color="secondary"
         />
-        <div className="flex justify-end">
+        <div className="flex md:justify-end justify-center">
           <Button
             className="w-min !bg-[#A0153E]"
             type="submit"

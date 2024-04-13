@@ -11,8 +11,8 @@ export default function AdminTable() {
   const { ticketsData } = useAdminTable();
   const rows: HomeFormData[] = ticketsData as HomeFormData[];
   return (
-    <TableContainer className="rounded-lg  bg-[#ffc9af]  bg-opacity-60 p-3">
-      <Table aria-label="collapsible table" className="">
+    <TableContainer className="rounded-lg  bg-[#ffc9af]  bg-opacity-60 p-3 ">
+      <Table aria-label="collapsible table">
         <TableHeaders />
         <TableBody>
           {rows.map((row) => (

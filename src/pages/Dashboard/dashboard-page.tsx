@@ -21,7 +21,7 @@ const DashboardPage = () => {
 
       {statsStatus === "success" && statsStatus === "success" && (
         <div className="flex flex-col h-full gap-3">
-          <div className="grid md:grid-cols-3 gap-10 ">
+          <div className="grid lg:grid-cols-3 gap-10 ">
             <DashboardCard
               title={"Ticket's Booked"}
               value={dashboardStats?.ticketsBooked || "0"}
@@ -38,7 +38,7 @@ const DashboardPage = () => {
               icon={<ExitToAppIcon className="!text-8xl" />}
             />
           </div>
-          <div className="h-full flex flex-row">
+          <div className="h-full flex lg:flex-row flex-col">
             <div className="w-1/2">1</div>
             <div className="flex-1">
               <DoughnutChart dashboardStats={dashboardStats} />

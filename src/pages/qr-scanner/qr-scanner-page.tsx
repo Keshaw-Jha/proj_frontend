@@ -11,11 +11,11 @@ function QrScanner() {
 
   return (
     <div className=" h-full justify-center items-center flex">
-      <div className="grid grid-cols-7 rounded-lg bg-[#FF204E] min-w-[700px] w-fit h-[80%]">
-        <div className=" col-span-4 m-8 flex flex-col justify-center items-center">
+      <div className="grid lg:grid-cols-7 sm:grid-rows-2 lg:grid-rows-1 w-full   rounded-lg bg-[#FF204E] lg:min-w-[700px] lg:w-fit lg:h-[80%] h-full">
+        <div className="lg:col-span-4 lg:m-8 flex flex-col justify-center items-center">
           <div className="w-[80%] p-3 m-3 rounded-lg bg-[#ffc9af] ">
             <Scanner
-              enabled={true}
+              enabled={false}
               onResult={(text) => {
                 handleQrScan(text);
               }}
@@ -24,7 +24,7 @@ function QrScanner() {
           </div>
           {/* <h3>hold Qr code inside the box</h3> */}
         </div>
-        <div className="flex flex-col bg-[#ffc9af] rounded-lg col-span-3 my-8 mr-8">
+        <div className="flex flex-col bg-[#ffc9af] rounded-lg lg:col-span-3 my-8 lg:mr-8 mx-8">
           <div className="grow flex text-[#A0153E]">
             {!ticketDetails.name ? (
               <div className=" mx-auto items-center flex ">

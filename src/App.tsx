@@ -22,9 +22,9 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
-      {/* {process.env.API_URL == "" && ( */}
+      {process.env.API_URL == "" && (
         <ReactQueryDevtools initialIsOpen={false} />
-      {/* )} */}
+      )}
     </QueryClientProvider>
   );
 }

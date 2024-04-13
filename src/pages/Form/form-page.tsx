@@ -4,10 +4,14 @@ import { Button, TextField } from "@mui/material";
 const FormPage = () => {
   const { editFormData, formSchema, isFormSubmitted } = useFormpage();
   return !isFormSubmitted ? (
-    <div className="flex flex-row gap-5 m-10 grow">
-      <img src="assets\Happy Bunch - Standing.png" alt="" />
+    <div className="flex flex-col lg:flex-row gap-5 m-10 grow ">
+      <img
+        src="assets\Happy Bunch - Standing.png"
+        alt=""
+        className="order-2 md:order-1 hidden md:block"
+      />
       <form
-        className=" grid gap-3 w-2/3"
+        className=" grid gap-3 md:w-2/3 order-1 md:order-2"
         id="form-edit"
         onSubmit={editFormData?.handleSubmit}
         onReset={editFormData?.handleReset}>
@@ -37,7 +41,7 @@ const FormPage = () => {
         />
 
         <Button
-          className=" max-w-min justify-self-end !bg-[#A0153E]"
+          className=" max-w-min justify-self-center md:justify-self-end !bg-[#A0153E]"
           type="submit"
           size="small"
           form="form-edit"
