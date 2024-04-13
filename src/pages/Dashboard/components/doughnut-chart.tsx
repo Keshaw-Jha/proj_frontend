@@ -9,11 +9,15 @@ const DoughnutChart: React.FC<DoughnutChartProps> = ({ dashboardStats }) => {
   const data = [
     {
       name: "Active",
-      value: dashboardStats?.activeUsers,
+      value: dashboardStats?.activeUsers || 1,
       fill: "#8884d8",
     },
-    { name: "Exited", value: dashboardStats?.totalExits, fill: "#ff7300" },
-    { name: "Unvisited", value: dashboardStats?.unvisited, fill: "#ffc658" },
+    { name: "Exited", value: dashboardStats?.totalExits || 2, fill: "#ff7300" },
+    {
+      name: "Unvisited",
+      value: dashboardStats?.unvisited || 3,
+      fill: "#ffc658",
+    },
   ];
 
   return (

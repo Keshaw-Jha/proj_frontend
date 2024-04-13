@@ -1,9 +1,10 @@
 export const base_url = process.env.API_URL;
 
 export const QueryConst = {
-  submitForm: `${base_url}/submitForm`,
-  submitOtp: `${base_url}/submitOtp`,
-  getQr: `${base_url}/getQr`,
-  getAllTickets: `${base_url}/getTickets`,
-  getStats: `${base_url}/getStats`,
+  submitForm: `${base_url}/submitform`,
+  submitOtp: `${base_url}/submitotp`,
+  getQr: `${base_url}/getqr`,
+  getAllTickets: `${base_url}/gettickets`,
+  getStats: `${base_url}/getstats`,
+  updateTicketStatus: `${base_url}/updateticketstatus`,
 };

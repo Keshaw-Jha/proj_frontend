@@ -40,3 +40,20 @@ export const getQr = async (ticketId: string) => {
     throw err;
   }
 };
+
+export const handleEntryExit = async (ticketDetails: HomeFormData) => {
+  try {
+    const response = await axios.post(
+      QueryConst.updateTicketStatus,
+      ticketDetails
+    );
+    if (response.status === HttpStatusCode.Ok) {
+      return response.data;
+    } else {
+      throw new Error(`Request failed with status ${response.status}`);
+    }
+  } catch (error) {
+    console.error("Error updating Ticket  :", error);
+    throw error;
+  }
+};

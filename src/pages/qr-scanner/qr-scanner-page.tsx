@@ -1,23 +1,21 @@
 import { Button } from "@mui/material";
 import { Scanner } from "@yudiel/react-qr-scanner";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { useState } from "react";
+
+import useQrScanner from "./hooks/useQrScanner";
+import { convertUtcToIst } from "../../components/common-functions";
 
 function QrScanner() {
-  const [ticketDetails, setTicketDetails] = useState("");
-
-  const handleQrScan = (qrText: string) => {
-    const qrObj = JSON.parse(qrText);
-    setTicketDetails(qrObj);
-  };
+  const { handleQrScan, ticketDetails, dateString, allowEntryExit } =
+    useQrScanner();
 
   return (
     <div className=" h-full justify-center items-center flex">
-      <div className="grid grid-cols-7 rounded-lg bg-[#FF204E] w-[50%] h-[80%]">
+      <div className="grid grid-cols-7 rounded-lg bg-[#FF204E] min-w-[700px] w-fit h-[80%]">
         <div className=" col-span-4 m-8 flex flex-col justify-center items-center">
           <div className="w-[80%] p-3 m-3 rounded-lg bg-[#ffc9af] ">
             <Scanner
-              enabled={false}
+              enabled={true}
               onResult={(text) => {
                 handleQrScan(text);
               }}
@@ -27,19 +25,43 @@ function QrScanner() {
           {/* <h3>hold Qr code inside the box</h3> */}
         </div>
         <div className="flex flex-col bg-[#ffc9af] rounded-lg col-span-3 my-8 mr-8">
-          <div className="grow justify-center items-center flex text-[#A0153E]">
-            {ticketDetails == "" ? (
-              <AccountCircleIcon className="!text-9xl" />
+          <div className="grow flex text-[#A0153E]">
+            {!ticketDetails.name ? (
+              <div className=" mx-auto items-center flex ">
+                <AccountCircleIcon className="!text-6xl lg:!text-9xl" />
+              </div>
             ) : (
-              <div>{JSON.stringify(ticketDetails)}</div>
+              <div className="flex flex-col gap-3 h-min text-white my-auto rounded-lg p-6 bg-[#A0153E] mx-2 shadow-2xl shadow-red-400">
+                <span className="text-3xl font-bold">{ticketDetails.name}</span>
+                <span className="text-2xl font-bold ">
+                  +91 {ticketDetails?.phone}
+                </span>
+                <div className="flex flex-row items-center gap-3">
+                  {ticketDetails.entryAt && (
+                    <span className="text-xl font-bold ">
+                      {convertUtcToIst(ticketDetails.entryAt)}
+                    </span>
+                  )}
+
+                  <span className="text-5xl  shadow-2xl">&#8594;</span>
+                  {ticketDetails.exitAt && (
+                    <span className="text-xl font-bold ">
+                      {convertUtcToIst(ticketDetails.exitAt)}
+                    </span>
+                  )}
+                </div>
+                <span className="text-xl font-bold ">{dateString}</span>
+                <span className="text-xl font-bold ">Time Spent : 2hrs</span>
+              </div>
             )}
           </div>
           <div className="item-center justify-center flex p-3 gap-2 flex-row ">
             <Button
               variant="contained"
-              //   className="!bg-[#A0153E]"
+              className="!bg-[#A0153E] p-4 disabled:!bg-gray-400 !text-white"
+              onClick={allowEntryExit}
               size="small"
-              disabled={true}>
+              disabled={!ticketDetails.name}>
               Allow
             </Button>
           </div>

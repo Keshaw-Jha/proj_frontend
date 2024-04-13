@@ -7,19 +7,19 @@ import useDashboard from "./hooks/useDashboard";
 import HashLoader from "react-spinners/HashLoader";
 
 const DashboardPage = () => {
-  const { loadingStatus, dashboardStats, statsStatus } = useDashboard();
+  const { dashboardStats, statsStatus } = useDashboard();
 
   return (
     <div className="h-full flex-1">
-      {loadingStatus === "error" && <div>error</div>}
+      {statsStatus === "error" && <div>error</div>}
 
-      {loadingStatus === "loading" && (
+      {statsStatus === "loading" && (
         <div className="flex-1 h-full flex justify-center items-center">
           <HashLoader color="#ffc9af" />
         </div>
       )}
 
-      {loadingStatus === "success" && statsStatus === "success" && (
+      {statsStatus === "success" && statsStatus === "success" && (
         <div className="flex flex-col h-full gap-3">
           <div className="grid md:grid-cols-3 gap-10 ">
             <DashboardCard

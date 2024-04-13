@@ -13,43 +13,20 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { convertUtcToIst } from "../../../components/common-functions";
+import { HomeFormData } from "../../../model/HomeformData";
 
-function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number
-) {
-  return {
-    name,
-    calories,
-    fat,
-    carbs,
-
-    details: [
-      {
-        date: "2020-01-05",
-        customerId: "11091700",
-        amount: 3,
-      },
-      {
-        date: "2020-01-02",
-        customerId: "Anonymous",
-        amount: 1,
-      },
-    ],
-  };
-}
-
-function custTableCell(value: string | number) {
+function custTableCell(value: string | number, param?: boolean) {
   return (
-    <TableCell align="right" className="!text-white !text-lg  !font-semibold">
+    <TableCell
+      align={param ? "left" : "right"}
+      className="!text-white !text-lg  !font-semibold">
       {value}
     </TableCell>
   );
 }
 
-function Row(props: { row: ReturnType<typeof createData> }) {
+function Row(props: { row: Omit<HomeFormData, "qr"> }) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
 
@@ -66,39 +43,63 @@ function Row(props: { row: ReturnType<typeof createData> }) {
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell component="th" scope="row" className="!text-white ">
-          {row.name}
-        </TableCell>
-        {custTableCell(row.calories)}
-        {custTableCell(row.fat)}
-        {custTableCell(row.carbs)}
+        {custTableCell(row.name, true)}
+        {custTableCell(row.phone)}
+        {row.entryAt && custTableCell(convertUtcToIst(row.entryAt))}
+        {row.exitAt && custTableCell(convertUtcToIst(row.exitAt))}
       </TableRow>
-      <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+      <TableRow sx={{ "& > *": { borderBottom: 0 } }}>
+        <TableCell
+          style={{
+            paddingBottom: 0,
+            paddingTop: 0,
+            backgroundColor: "#A0153E",
+            borderRadius: "10px",
+            opacity: 0.8,
+          }}
+          colSpan={Object.keys(row).length + 1}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
-              <Typography variant="h6" gutterBottom component="div">
-                History
+              <Typography
+                variant="h6"
+                gutterBottom
+                component="div"
+                className="text-white !font-semibold">
+                Additional Info
               </Typography>
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell>
+                    <TableCell className="!text-white !text-lg !font-semibold">
+                      Email
+                    </TableCell>
+                    <TableCell className="!text-white !text-lg !font-semibold">
+                      Aadhaar
+                    </TableCell>
+                    <TableCell
+                      align="right"
+                      className="!text-white !text-lg !font-semibold">
+                      Created At
+                    </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {row.details.map((historyRow) => (
-                    <TableRow key={historyRow.date}>
-                      <TableCell component="th" scope="row">
-                        {historyRow.date}
-                      </TableCell>
-                      <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell align="right">{historyRow.amount}</TableCell>
-                    </TableRow>
-                  ))}
+                  <TableRow>
+                    <TableCell
+                      component="th"
+                      scope="row"
+                      className="!text-white !border-b-0 !text-lg !font-semibold">
+                      {row.email}
+                    </TableCell>
+                    <TableCell className="!text-white !border-b-0 !text-lg !font-semibold">
+                      {row.adhaar}
+                    </TableCell>
+                    <TableCell
+                      align="right"
+                      className="!text-white !border-b-0 !text-lg !font-semibold">
+                      {convertUtcToIst(row.createdAt as Date)}
+                    </TableCell>
+                  </TableRow>
                 </TableBody>
               </Table>
             </Box>
