@@ -95,21 +95,22 @@ const CustomParticles: React.FC<ParticleProps> = () => {
     []
   );
 
-  if (init) {
-    return (
-      <Particles
-        id="tsparticles"
-        particlesLoaded={particlesLoaded}
-        options={options}
-        style={{
-          opacity: init ? 1 : 0,
-          transition: "opacity 0.7s",
-        }}
-      />
-    );
-  }
-
-  return <></>;
+  return (
+    <div
+      style={{
+        height: "0px",
+        opacity: init ? 1 : 0,
+        transition: "opacity 0.7s",
+      }}>
+      {init && (
+        <Particles
+          id="tsparticles"
+          particlesLoaded={particlesLoaded}
+          options={options}
+        />
+      )}
+    </div>
+  );
 };
 
 export default CustomParticles;
