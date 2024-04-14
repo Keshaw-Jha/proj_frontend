@@ -7,12 +7,10 @@ import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSl
 // import { loadBasic } from "@tsparticles/basic"; // if you are going to use `loadBasic`, install the "@tsparticles/basic" package too.
 
 interface ParticleProps {
-  handleParticlesLoaded: () => void;
+  handleParticlesLoaded?: () => void;
 }
 
-const CustomParticles: React.FC<ParticleProps> = ({
-  handleParticlesLoaded,
-}) => {
+const CustomParticles: React.FC<ParticleProps> = () => {
   const [init, setInit] = useState(false);
 
   // this should be run only once per application lifetime
@@ -98,12 +96,15 @@ const CustomParticles: React.FC<ParticleProps> = ({
   );
 
   if (init) {
-    handleParticlesLoaded();
     return (
       <Particles
         id="tsparticles"
         particlesLoaded={particlesLoaded}
         options={options}
+        style={{
+          opacity: init ? 1 : 0,
+          transition: "opacity 0.7s",
+        }}
       />
     );
   }
