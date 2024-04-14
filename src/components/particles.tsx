@@ -6,7 +6,13 @@ import { type Container, type ISourceOptions } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
 // import { loadBasic } from "@tsparticles/basic"; // if you are going to use `loadBasic`, install the "@tsparticles/basic" package too.
 
-const CustomParticles = () => {
+interface ParticleProps {
+  handleParticlesLoaded: () => void;
+}
+
+const CustomParticles: React.FC<ParticleProps> = ({
+  handleParticlesLoaded,
+}) => {
   const [init, setInit] = useState(false);
 
   // this should be run only once per application lifetime
@@ -92,6 +98,7 @@ const CustomParticles = () => {
   );
 
   if (init) {
+    handleParticlesLoaded();
     return (
       <Particles
         id="tsparticles"
