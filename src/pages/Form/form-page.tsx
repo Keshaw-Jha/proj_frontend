@@ -8,7 +8,7 @@ const FormPage = () => {
       <img
         src="assets\Happy Bunch - Standing.png"
         alt=""
-        className="order-2 md:order-1 hidden md:block"
+        className="hidden order-2 md:order-1 md:block"
       />
       <form
         className=" grid gap-3 md:w-2/3 order-1 md:order-2"
