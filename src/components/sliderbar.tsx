@@ -47,7 +47,7 @@ const Sidebar = () => {
     <aside
       id="sidebar"
       className="font-semibold h-full overflow-y-auto text-base flex flex-col ">
-      <div className="md:w-full w-1/4 flex items-center mx-auto">
+      <div className="md:w-full w-1/3 flex items-center mx-auto">
         <img
           src="/assets/pravesh_logo1.2.png"
           alt=""
