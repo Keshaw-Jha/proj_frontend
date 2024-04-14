@@ -16,7 +16,7 @@ type SidebarItemProps = {
 function SidebarItem({ icon, text, link, isActive }: SidebarItemProps) {
   return (
     <li
-      className={`p-4 flex items-center hover:text-lg hover:font-bold  ${
+      className={`p-4 flex items-center hover:text-lg hover:font-bold justify-center md:justify-start ${
         isActive ? "bg-white text-[#FF204E] text-lg font-bold" : ""
       }`}>
       {icon}
@@ -46,16 +46,16 @@ const Sidebar = () => {
   return (
     <aside
       id="sidebar"
-      className="font-semibold h-full overflow-y-auto text-base flex flex-col">
-      <div className="w-full">
+      className="font-semibold h-full overflow-y-auto text-base flex flex-col ">
+      <div className="md:w-full w-1/4 flex items-center mx-auto">
         <img
           src="/assets/pravesh_logo1.2.png"
           alt=""
-          className="w-1/2 mx-auto mt-2"
+          className="md:w-1/2 mx-auto mt-2 w-full"
         />
       </div>
 
-      <ul className="sidebar-list flex flex-col mt-5">
+      <ul className="sidebar-list flex flex-col mt-5 flex-1">
         <SidebarItem
           icon={<DashboardIcon />}
           text="Dashboard"
