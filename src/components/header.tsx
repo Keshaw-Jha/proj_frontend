@@ -1,6 +1,7 @@
-import { Button } from "@mui/material";
+import { Button, Tooltip } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
+import AccessibilityIcon from "@mui/icons-material/Accessibility";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
@@ -18,12 +19,16 @@ const Header = () => {
           style={{ fontFamily: "yatra one" }}>
           प्रVEश SYस्टUM
         </h3>
-        <Button
-          color={"warning"}
-          className="!bg-orange-500 !text-white "
-          onClick={handleButtonCLick}>
-          Admin
-        </Button>
+        <Tooltip title="Admin">
+          <Button
+            color={"warning"}
+            size="small"
+            variant="contained"
+            className="!bg-orange-500 !text-white !rounded-full"
+            onClick={handleButtonCLick}>
+            <AccessibilityIcon />
+          </Button>
+        </Tooltip>
       </Toolbar>
     </AppBar>
   );
