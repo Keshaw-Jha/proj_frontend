@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Sidebar from "../../components/sliderbar";
+import Sidebar from "../../components/sidebar";
 import DashboardPage from "../Dashboard";
 import QrScanner from "../qr-scanner";
 import AdminTable from "../AdminTable";
@@ -14,7 +14,7 @@ function AdminHomePage() {
       <div className="md:w-[264px] flex-shrink-0  text-[#FFFFFF]">
         <Sidebar />
       </div>
-      <div className="flex flex-col flex-1 m-2 md:overflow-x-auto">
+      <div className="flex flex-col flex-1 m-2 md:overflow-x-auto z-10">
         <div className="bg-[#A0153E] p-4 font-bold text-xl text-[#FFFFFF] rounded-t-lg">
           {heading}
         </div>

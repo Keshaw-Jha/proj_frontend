@@ -1,4 +1,4 @@
-import { Button, Tooltip } from "@mui/material";
+import { Button, IconButton, Tooltip } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import AccessibilityIcon from "@mui/icons-material/Accessibility";
@@ -20,13 +20,10 @@ const Header = () => {
           प्रVEश SYस्टUM
         </h3>
         <Tooltip title="Admin">
-          <Button
-            color={"warning"}
-            size="small"
-            variant="contained"
-            className="!bg-orange-500 !text-white !rounded-full"
-            onClick={handleButtonCLick}>
-            <AccessibilityIcon />
+          <Button size="small" onClick={handleButtonCLick}>
+            <IconButton className="!bg-orange-500 !text-white hover:shadow-indigo-950 shadow-md">
+              <AccessibilityIcon />
+            </IconButton>
           </Button>
         </Tooltip>
       </Toolbar>

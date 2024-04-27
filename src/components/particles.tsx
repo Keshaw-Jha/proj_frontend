@@ -8,9 +8,10 @@ import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSl
 
 interface ParticleProps {
   handleParticlesLoaded?: () => void;
+  admin?: boolean;
 }
 
-const CustomParticles: React.FC<ParticleProps> = () => {
+const CustomParticles: React.FC<ParticleProps> = ({ admin = false }) => {
   const [init, setInit] = useState(false);
 
   // this should be run only once per application lifetime
@@ -52,18 +53,18 @@ const CustomParticles: React.FC<ParticleProps> = () => {
             quantity: 4,
           },
           repulse: {
-            distance: 150,
+            distance: admin ? 80 : 150,
             duration: 0.4,
           },
         },
       },
       particles: {
         color: {
-          value: "#fc4c70",
+          value: admin ? "#00357a" : "#fc4c70",
         },
         links: {
           color: "#ffff",
-          distance: 150,
+          distance: admin ? 100 : 150,
           enable: true,
           opacity: 0.5,
           width: 1,
