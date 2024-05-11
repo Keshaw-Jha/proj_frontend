@@ -1,4 +1,4 @@
-import { Button, IconButton, Tooltip } from "@mui/material";
+import { IconButton, Tooltip } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import AccessibilityIcon from "@mui/icons-material/Accessibility";
@@ -19,12 +19,13 @@ const Header = () => {
           style={{ fontFamily: "yatra one" }}>
           प्रVEश SYस्टUM
         </h3>
+
         <Tooltip title="Admin">
-          <Button size="small" onClick={handleButtonCLick}>
-            <IconButton className="!bg-orange-500 !text-white hover:shadow-indigo-950 shadow-md">
-              <AccessibilityIcon />
-            </IconButton>
-          </Button>
+          <IconButton
+            className="!bg-orange-500 !text-white hover:shadow-indigo-950 shadow-md"
+            onClick={handleButtonCLick}>
+            <AccessibilityIcon />
+          </IconButton>
         </Tooltip>
       </Toolbar>
     </AppBar>

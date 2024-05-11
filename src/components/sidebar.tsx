@@ -4,7 +4,7 @@ import DescriptionRoundedIcon from "@mui/icons-material/DescriptionRounded";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import HomeIcon from "@mui/icons-material/Home";
-import { Button, IconButton, Tooltip } from "@mui/material";
+import { IconButton, Tooltip } from "@mui/material";
 import CustomParticles from "./particles";
 
 // Define types for SidebarItem props
@@ -61,16 +61,15 @@ const Sidebar = () => {
           />
         </div>
         <Tooltip title="Home">
-          <Button
-            size="small"
-            onClick={() => {
-              navigate("/");
-            }}
-            className="!absolute top-4 right-5 md:top-0 md:right-0 w-min">
-            <IconButton className="!bg-orange-500 !text-white hover:shadow-indigo-950 shadow-md">
+          <div className="!absolute top-4 right-5 md:top-0 md:right-0 w-min">
+            <IconButton
+              className="!bg-orange-500 !text-white hover:shadow-indigo-950 shadow-md"
+              onClick={() => {
+                navigate("/");
+              }}>
               <HomeIcon />
             </IconButton>
-          </Button>
+          </div>
         </Tooltip>
       </div>
 

@@ -1,9 +1,10 @@
 import "./App.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import HomePage from "./pages/Home";
-import AdminHomePage from "./pages/AdminHome";
+// import AdminHomePage from "./pages/AdminHome";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import SignInSide from "./pages/LoginPage";
 
 const router = createBrowserRouter([
   {
@@ -12,7 +13,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin/*",
-    element: <AdminHomePage />,
+    element: <SignInSide />,
   },
 ]);
 

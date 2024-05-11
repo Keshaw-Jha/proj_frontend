@@ -32,3 +32,12 @@ export type DashboardStats = {
   totalExits: number;
   unvisited: number;
 };
+
+export interface SignIn extends LogIn {
+  name: string;
+}
+
+export interface LogIn {
+  password: string;
+  email: string;
+}
