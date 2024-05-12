@@ -15,6 +15,7 @@ export const signInUser = async (userData: SignIn) => {
     throw error;
   }
 };
+
 export const logInUser = async (userData: LogIn) => {
   try {
     const response = await axios.post(QueryConst.logIn, userData);
