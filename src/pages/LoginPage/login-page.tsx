@@ -139,19 +139,21 @@ export default function SignInSide() {
               sx={{ mt: 3, mb: 2 }}>
               {isUser ? "Sign In" : "Sign Up"}
             </Button>
-            <Grid container className="flex justify-center">
-              <Grid item>
-                <Button
-                  style={{ textTransform: "none" }}
-                  onClick={() => {
-                    setIsUser(!isUser);
-                  }}>
-                  {isUser
-                    ? "Don't have an account? Sign Up"
-                    : "Already User Sign In"}
-                </Button>
+            {!isUser && (
+              <Grid container className="flex justify-center">
+                <Grid item>
+                  <Button
+                    style={{ textTransform: "none" }}
+                    onClick={() => {
+                      setIsUser(!isUser);
+                    }}>
+                    {isUser
+                      ? "Don't have an account? Sign Up"
+                      : "Already User Sign In"}
+                  </Button>
+                </Grid>
               </Grid>
-            </Grid>
+            )}
             <Copyright sx={{ mt: 3 }} />
           </Box>
         </Box>

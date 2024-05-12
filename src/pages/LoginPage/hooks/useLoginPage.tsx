@@ -4,7 +4,7 @@ import { SignIn } from "../../../model/HomeformData";
 import { logInUser, signInUser } from "../../../api/logIn-ep";
 
 export const useLogInPage = () => {
-  const [isUser, setIsUser] = useState(false);
+  const [isUser, setIsUser] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [errors, setErrors] = useState<SignIn>({} as SignIn);

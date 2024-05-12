@@ -1,10 +1,11 @@
-import axios, { HttpStatusCode } from "axios";
+import { HttpStatusCode } from "axios";
 import { QueryConst } from "./queryConsts";
 import { DashboardStats } from "../model/HomeformData";
+import { axiosWithAuth } from "./global-api";
 
 export const getAllTickets = async () => {
   try {
-    const response = await axios.get(QueryConst.getAllTickets);
+    const response = await axiosWithAuth.get(QueryConst.getAllTickets);
     if (response.status === HttpStatusCode.Ok) {
       return response.data.data;
     } else {
@@ -18,7 +19,7 @@ export const getAllTickets = async () => {
 
 export const getDashboardStats = async (): Promise<DashboardStats> => {
   try {
-    const response = await axios.get(QueryConst.getStats);
+    const response = await axiosWithAuth.get(QueryConst.getStats);
     if (response.status === HttpStatusCode.Ok) {
       return response.data.data;
     } else {
