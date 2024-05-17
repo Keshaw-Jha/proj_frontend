@@ -15,7 +15,7 @@ function QrScanner() {
         <div className="lg:col-span-4 lg:m-8 flex flex-col justify-center items-center">
           <div className="w-[80%] p-3 m-3 rounded-lg bg-[#ffc9af] ">
             <Scanner
-              enabled={false}
+              enabled={true}
               onResult={(text) => {
                 handleQrScan(text);
               }}
@@ -61,7 +61,8 @@ function QrScanner() {
               className="!bg-[#A0153E] p-4 disabled:!bg-gray-400 !text-white"
               onClick={allowEntryExit}
               size="small"
-              disabled={!ticketDetails.name}>
+              disabled={!ticketDetails.name}
+            >
               Allow
             </Button>
           </div>
