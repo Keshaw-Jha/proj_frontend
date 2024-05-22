@@ -2,20 +2,20 @@ import { PieChart, Pie, ResponsiveContainer, Cell } from "recharts";
 import { DashboardStats } from "../../../model/HomeformData";
 
 interface DoughnutChartProps {
-  dashboardStats: DashboardStats | undefined;
+  dashBoardStats: DashboardStats | undefined;
 }
 
-const DoughnutChart: React.FC<DoughnutChartProps> = ({ dashboardStats }) => {
+const DoughnutChart: React.FC<DoughnutChartProps> = ({ dashBoardStats }) => {
   const data = [
     {
       name: "Active",
-      value: dashboardStats?.activeUsers || 1,
+      value: dashBoardStats?.activeUsers || 1,
       fill: "#8884d8",
     },
-    { name: "Exited", value: dashboardStats?.totalExits || 2, fill: "#ff7300" },
+    { name: "Exited", value: dashBoardStats?.totalExits || 2, fill: "#ff7300" },
     {
       name: "Unvisited",
-      value: dashboardStats?.unvisited || 3,
+      value: dashBoardStats?.unvisited || 3,
       fill: "#ffc658",
     },
   ];

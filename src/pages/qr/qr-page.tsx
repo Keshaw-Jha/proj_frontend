@@ -11,7 +11,7 @@ const QrPage = ({ ticketId }: Props) => {
     qr !== "" && (
       <div className="flex flex-row  items-center justify-center gap-5 my-10 ">
         <img
-          src="public\assets\Tutto Ricco - Making a Difference.png"
+          src="assets\Tutto Ricco - Making a Difference.png"
           alt=""
           className="hidden md:block"
         />

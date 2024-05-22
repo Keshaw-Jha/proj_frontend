@@ -17,6 +17,20 @@ export const getAllTickets = async () => {
   }
 };
 
+export const getSettings = async () => {
+  try {
+    const response = await axiosWithAuth.get(QueryConst.getSettings);
+    if (response.status === HttpStatusCode.Ok) {
+      return response.data.data;
+    } else {
+      throw new Error(`Request failed with status ${response.status}`);
+    }
+  } catch (error) {
+    console.error("Error submitting form :", error);
+    throw error;
+  }
+};
+
 export const getDashboardStats = async (): Promise<DashboardStats> => {
   try {
     const response = await axiosWithAuth.get(QueryConst.getStats);

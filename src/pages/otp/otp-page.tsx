@@ -12,7 +12,7 @@ const OtpPage = ({ formValue }: props) => {
   return !isOtpSubmitted ? (
     <div className="flex flex-row gap-5 m-10 grow justify-center items-center">
       <img
-        src="public\assets\Happy Bunch - Chat.png"
+        src="assets\Happy Bunch - Chat.png"
         alt=""
         className="hidden md:block"
       />

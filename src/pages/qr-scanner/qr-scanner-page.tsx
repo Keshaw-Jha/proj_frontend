@@ -5,9 +5,15 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import useQrScanner from "./hooks/useQrScanner";
 import { convertUtcToIst } from "../../components/common-functions";
 
-function QrScanner() {
-  const { handleQrScan, ticketDetails, dateString, allowEntryExit } =
-    useQrScanner();
+const QrScanner = () => {
+  const {
+    handleQrScan,
+    ticketDetails,
+    dateString,
+    allowEntryExit,
+    allowDisabled,
+    duration,
+  } = useQrScanner();
 
   return (
     <div className=" h-full justify-center items-center flex">
@@ -51,7 +57,11 @@ function QrScanner() {
                   )}
                 </div>
                 <span className="text-xl font-bold ">{dateString}</span>
-                <span className="text-xl font-bold ">Time Spent : 2hrs</span>
+                {ticketDetails.entryAt && ticketDetails.exitAt && (
+                  <span className="text-xl font-bold ">
+                    Time Spent : {duration}
+                  </span>
+                )}
               </div>
             )}
           </div>
@@ -61,8 +71,9 @@ function QrScanner() {
               className="!bg-[#A0153E] p-4 disabled:!bg-gray-400 !text-white"
               onClick={allowEntryExit}
               size="small"
-              disabled={!ticketDetails.name}
-            >
+              disabled={
+                !ticketDetails.name && (!ticketDetails.exitAt || allowDisabled)
+              }>
               Allow
             </Button>
           </div>
@@ -70,6 +81,6 @@ function QrScanner() {
       </div>
     </div>
   );
-}
+};
 
 export default QrScanner;

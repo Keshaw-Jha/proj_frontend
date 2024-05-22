@@ -9,6 +9,7 @@ const useAdminHome = () => {
     ["/getAllTickets"],
     getAllTickets
   );
+
   const [heading, setHeading] = useState("");
 
   const location = useLocation();

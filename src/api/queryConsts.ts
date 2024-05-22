@@ -7,6 +7,8 @@ export const QueryConst = {
   getAllTickets: `${base_url}gettickets`,
   getStats: `${base_url}getstats`,
   updateTicketStatus: `${base_url}updateticketstatus`,
+  getSettings: `${base_url}getsettings`,
   logIn: `${base_url}login`,
   signIn: `${base_url}signin`,
+  isEntryAllowed: `${base_url}isentryallowed`,
 };

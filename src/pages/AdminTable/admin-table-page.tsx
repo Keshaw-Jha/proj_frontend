@@ -16,7 +16,7 @@ export default function AdminTable() {
         <TableHeaders />
         <TableBody>
           {rows.map((row) => (
-            <Row key={row.name} row={row} />
+            <Row key={row.ticketId} row={row} />
           ))}
         </TableBody>
       </Table>
