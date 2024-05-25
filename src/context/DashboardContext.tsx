@@ -42,8 +42,8 @@ export const DashboardProvider: React.FC<
 
   useEffect(() => {
     const socket: Socket = io(base_url as string, {
-      transports: ["polling"],
       // withCredentials: true,
+      transports: ["polling"],
       // auth: {
       //   token: getToken(),
       // },
