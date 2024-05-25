@@ -42,16 +42,27 @@ export const DashboardProvider: React.FC<
 
   useEffect(() => {
     const socket: Socket = io(base_url as string, {
-      // withCredentials: true,
       transports: ["polling"],
-      // auth: {
-      //   token: getToken(),
-      // },
-    }); // Adjust the URL if needed
+      reconnectionAttempts: 5, // Number of attempts before giving up
+      reconnectionDelay: 1000, // Delay between attempts in milliseconds
+    });
+
+    socket.on("connect", () => {
+      console.log("Socket connected");
+    });
 
     socket.on("dashboardStats", (data: Stats) => {
       setStats(data);
     });
+
+    socket.on("disconnect", () => {
+      console.log("Socket disconnected");
+    });
+
+    socket.on("connect_error", (err) => {
+      console.error("Connection error:", err);
+    });
+
     return () => {
       socket.disconnect();
     };
