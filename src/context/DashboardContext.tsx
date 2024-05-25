@@ -43,7 +43,8 @@ export const DashboardProvider: React.FC<
   useEffect(() => {
     const socket: Socket = io(base_url as string, {
       withCredentials: true,
-      transports: ["websocket", "polling"],
+      path: "/socket.io/",
+      transports: ["websocket"],
       auth: {
         token: getToken(),
       },
