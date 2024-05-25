@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { io, Socket } from "socket.io-client";
 import { base_url } from "../api/queryConsts";
-import { getToken } from "../api/global-api";
+// import { getToken } from "../api/global-api";
 
 interface Stats {
   activeUsers: number;
@@ -42,12 +42,10 @@ export const DashboardProvider: React.FC<
 
   useEffect(() => {
     const socket: Socket = io(base_url as string, {
-      withCredentials: true,
-      path: "/socket.io/",
-      transports: ["websocket"],
-      auth: {
-        token: getToken(),
-      },
+      // withCredentials: true,
+      // auth: {
+      //   token: getToken(),
+      // },
     }); // Adjust the URL if needed
 
     socket.on("dashboardStats", (data: Stats) => {
