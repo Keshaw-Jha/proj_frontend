@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import { io, Socket } from "socket.io-client";
 import { base_url } from "../api/queryConsts";
+import { getToken } from "../api/global-api";
 
 interface Stats {
   activeUsers: number;
@@ -40,7 +41,13 @@ export const DashboardProvider: React.FC<
   });
 
   useEffect(() => {
-    const socket: Socket = io(base_url as string); // Adjust the URL if needed
+    const socket: Socket = io(base_url as string, {
+      withCredentials: true,
+      transports: ["websocket", "polling"],
+      auth: {
+        token: getToken(),
+      },
+    }); // Adjust the URL if needed
 
     socket.on("dashboardStats", (data: Stats) => {
       setStats(data);

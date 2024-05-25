@@ -4,6 +4,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 import useQrScanner from "./hooks/useQrScanner";
 import { convertUtcToIst } from "../../components/common-functions";
+import ErrorIcon from "@mui/icons-material/Error";
 
 const QrScanner = () => {
   const {
@@ -30,13 +31,13 @@ const QrScanner = () => {
           </div>
           {/* <h3>hold Qr code inside the box</h3> */}
         </div>
-        <div className="flex flex-col bg-[#ffc9af] rounded-lg lg:col-span-3 my-8 lg:mr-8 mx-8">
+        <div className="flex flex-col bg-[#ffc9af] rounded-lg lg:col-span-3 my-8 lg:mr-8 mx-8 p-3">
           <div className="grow flex text-[#A0153E]">
             {!ticketDetails.name ? (
               <div className=" mx-auto items-center flex ">
                 <AccountCircleIcon className="!text-6xl lg:!text-9xl" />
               </div>
-            ) : (
+            ) : !allowDisabled ? (
               <div className="flex flex-col gap-3 h-min text-white my-auto rounded-lg p-6 bg-[#A0153E] mx-2 shadow-2xl shadow-red-400">
                 <span className="text-3xl font-bold">{ticketDetails.name}</span>
                 <span className="text-2xl font-bold ">
@@ -63,6 +64,12 @@ const QrScanner = () => {
                   </span>
                 )}
               </div>
+            ) : (
+              <div className="flex justify-center items-center flex-col w-max">
+                <ErrorIcon className="!w-30 !h-30" />
+                <h2>MAX LIMIT REACHED</h2>
+                <p>entry will be resumed soon</p>
+              </div>
             )}
           </div>
           <div className="item-center justify-center flex p-3 gap-2 flex-row ">
@@ -71,9 +78,7 @@ const QrScanner = () => {
               className="!bg-[#A0153E] p-4 disabled:!bg-gray-400 !text-white"
               onClick={allowEntryExit}
               size="small"
-              disabled={
-                !ticketDetails.name && (!ticketDetails.exitAt || allowDisabled)
-              }>
+              disabled={!ticketDetails.name || allowDisabled}>
               Allow
             </Button>
           </div>

@@ -4,7 +4,7 @@ import { Button, TextField } from "@mui/material";
 const FormPage = () => {
   const { editFormData, formSchema, isFormSubmitted } = useFormpage();
   return !isFormSubmitted ? (
-    <div className="flex flex-col lg:flex-row gap-5 m-10 grow ">
+    <div className="flex flex-col lg:flex-row gap-5 m-10 grow">
       <img
         src="assets\Happy Bunch - Standing.png"
         alt=""

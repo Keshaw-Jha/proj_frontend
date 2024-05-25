@@ -49,6 +49,7 @@ const useQrScanner = () => {
     );
 
     if (foundTicket) {
+      if (foundTicket.exitAt) return;
       if (foundTicket.entryAt) {
         const differenceInMs =
           new Date().getTime() - new Date(foundTicket.entryAt).getTime();
@@ -79,10 +80,13 @@ const useQrScanner = () => {
   };
 
   useEffect(() => {
-    if ((userSettings?.maxEntry || 1) <= dashBoardStats.activeUsers)
+    if (
+      !ticketDetails.exitAt &&
+      (userSettings?.maxEntry || 2) <= dashBoardStats.activeUsers
+    ) {
       setAllowDisabled(true);
-    else setAllowDisabled(false);
-  }, [dashBoardStats, userSettings?.maxEntry]);
+    } else setAllowDisabled(false);
+  }, [dashBoardStats, userSettings, ticketDetails]);
 
   return {
     handleQrScan,

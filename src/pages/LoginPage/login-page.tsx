@@ -11,6 +11,7 @@ import Copyright from "../../components/copyRight";
 import { useLogInPage } from "./hooks/useLoginPage";
 import { IconButton, InputAdornment } from "@mui/material";
 import AdminHomePage from "../AdminHome";
+import { DashboardProvider } from "../../context/DashboardContext";
 
 export default function SignInSide() {
   const {
@@ -160,6 +161,8 @@ export default function SignInSide() {
       </Grid>
     </Grid>
   ) : (
-    <AdminHomePage />
+    <DashboardProvider>
+      <AdminHomePage />
+    </DashboardProvider>
   );
 }

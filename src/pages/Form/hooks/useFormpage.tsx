@@ -41,7 +41,11 @@ export const useFormpage = () => {
     validationSchema: yup.object().shape({
       name: yup.string().required("Required"),
       email: yup.string().email("Invalid email").required("Required"),
-      phone: yup.string().required("Required"),
+      phone: yup
+        .string()
+        .label("phone")
+        .required("")
+        .length(10, "10 digits required"),
       adhaar: yup
         .string()
         .length(12, "Must be exactly 12 digits")
