@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { io, Socket } from "socket.io-client";
 import { base_url } from "../api/queryConsts";
-// import { getToken } from "../api/global-api";
+import { getToken } from "../api/global-api";
 
 interface Stats {
   activeUsers: number;
@@ -42,27 +42,16 @@ export const DashboardProvider: React.FC<
 
   useEffect(() => {
     const socket: Socket = io(base_url as string, {
-      transports: ["polling"],
-      reconnectionAttempts: 5, // Number of attempts before giving up
-      reconnectionDelay: 1000, // Delay between attempts in milliseconds
-    });
-
-    socket.on("connect", () => {
-      console.log("Socket connected");
-    });
+      withCredentials: true,
+      transports: ["websocket", "polling"],
+      auth: {
+        token: getToken(),
+      },
+    }); // Adjust the URL if needed
 
     socket.on("dashboardStats", (data: Stats) => {
       setStats(data);
     });
-
-    socket.on("disconnect", () => {
-      console.log("Socket disconnected");
-    });
-
-    socket.on("connect_error", (err) => {
-      console.error("Connection error:", err);
-    });
-
     return () => {
       socket.disconnect();
     };
