@@ -1,4 +1,3 @@
-import AppToast from "../../utils/AppToast";
 import OtpPage from "../otp";
 import { useFormpage } from "./hooks/useFormpage";
 import { Button, TextField } from "@mui/material";
@@ -47,9 +46,6 @@ const FormPage = () => {
           type="submit"
           size="small"
           form="form-edit"
-          onClick={() => {
-            AppToast.info("Button Clicked");
-          }}
           variant="contained">
           Submit
         </Button>
