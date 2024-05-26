@@ -6,7 +6,7 @@ const AdminSettings = () => {
   const { settingsFormState, formSchema, userSettingsStatus } =
     useUserSettings();
   return (
-    <div className="flex items-center justify-center">
+    <div className="h-full flex-1 overflow-y-auto">
       {userSettingsStatus === "loading" && (
         <div className="flex-1 h-full flex justify-center items-center">
           <HashLoader color="#ffc9af" />
