@@ -65,7 +65,7 @@ const QrScanner = () => {
                 )}
               </div>
             ) : (
-              <div className="flex justify-center items-center flex-col w-max">
+              <div className="flex justify-center items-center flex-col w-full">
                 <ErrorIcon className="!w-30 !h-30" />
                 <h2>MAX LIMIT REACHED</h2>
                 <p>entry will be resumed soon</p>
