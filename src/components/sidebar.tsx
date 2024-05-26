@@ -4,6 +4,7 @@ import DescriptionRoundedIcon from "@mui/icons-material/DescriptionRounded";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import HomeIcon from "@mui/icons-material/Home";
+import SettingsIcon from "@mui/icons-material/Settings";
 import { IconButton, Tooltip } from "@mui/material";
 import CustomParticles from "./particles";
 
@@ -44,6 +45,8 @@ const Sidebar = () => {
       setActiveLink("/admin/scan");
     } else if (pathname === "/admin/records") {
       setActiveLink("/admin/records");
+    } else if (pathname === "/admin/settings") {
+      setActiveLink("/admin/settings");
     }
   }, [pathname]);
 
@@ -91,6 +94,12 @@ const Sidebar = () => {
           text="Records"
           link="/admin/records"
           isActive={activeLink === "/admin/records"}
+        />
+        <SidebarItem
+          icon={<SettingsIcon />}
+          text="Settings"
+          link="/admin/settings"
+          isActive={activeLink === "/admin/settings"}
         />
       </ul>
     </aside>

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FormikHelpers, useFormik } from "formik";
 import * as yup from "yup";
 import { submitForm } from "../../../api/api-ep";
+import AppToast from "../../../utils/AppToast";
 import {
   HomeFormData,
   getInitialFormValues,
@@ -18,10 +19,13 @@ export const useFormpage = () => {
   ) => {
     try {
       const responseData = await submitForm(values as HomeFormData);
-      await editFormData.setValues({ ...responseData.data });
+      await editFormData
+        .setValues({ ...responseData.data })
+        .then(() => AppToast.success("Form submitted successfully"));
       setFormSubmit(true);
     } catch (err) {
       console.log("error occured -", err);
+      AppToast.error("Form not submitted");
     } finally {
       setSubmitting(false);
     }

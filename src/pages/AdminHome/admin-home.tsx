@@ -5,6 +5,7 @@ import QrScanner from "../qr-scanner";
 import AdminTable from "../AdminTable";
 import useAdminHome from "./hooks/useAdminHome";
 import HashLoader from "react-spinners/HashLoader";
+import AdminSettings from "../AdminSettings";
 
 function AdminHomePage() {
   const { loadingStatus, heading } = useAdminHome();
@@ -29,6 +30,7 @@ function AdminHomePage() {
               <Route path="/" element={<DashboardPage />} />
               <Route path="/scan" element={<QrScanner />} />
               <Route path="/records" element={<AdminTable />} />
+              <Route path="/settings" element={<AdminSettings />} />
             </Routes>
           </div>
         )}

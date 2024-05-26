@@ -21,7 +21,9 @@ const useAdminHome = () => {
     } else if (pathname === "/admin/scan") {
       setHeading("Scan");
     } else if (pathname === "/admin/records") {
-      setHeading("Record");
+      setHeading("Records");
+    } else if (pathname === "/admin/settings") {
+      setHeading("Settings");
     }
   }, [pathname]);
   return { allTickets, loadingStatus, heading };

@@ -1,6 +1,7 @@
 import axios, { HttpStatusCode } from "axios";
 import { HomeFormData, otpData } from "../model/HomeformData";
 import { QueryConst } from "./queryConsts";
+import { axiosWithAuth } from "./global-api";
 
 export const submitForm = async (formData: HomeFormData) => {
   try {
@@ -43,7 +44,7 @@ export const getQr = async (ticketId: string) => {
 
 export const handleEntryExit = async (ticketDetails: HomeFormData) => {
   try {
-    const response = await axios.post(
+    const response = await axiosWithAuth.post(
       QueryConst.updateTicketStatus,
       ticketDetails
     );

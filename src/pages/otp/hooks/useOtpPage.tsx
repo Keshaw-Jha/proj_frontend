@@ -4,6 +4,7 @@ import { FormikHelpers, useFormik } from "formik";
 import * as yup from "yup";
 import { HomeFormData } from "../../../model/HomeformData";
 import { submitOtp } from "../../../api/api-ep";
+import AppToast from "../../../utils/AppToast";
 
 export const useOtpPage = (formValue: HomeFormData) => {
   const [isOtpSubmitted, setOtpSubmit] = useState(false);
@@ -19,6 +20,7 @@ export const useOtpPage = (formValue: HomeFormData) => {
       const response = await submitOtp(tempObj);
       if (response) {
         setOtpSubmit(true);
+        AppToast.success("Otp submitted successfully");
       } else throw new Error("otp verification fails");
     } catch (err) {
       console.log(err);

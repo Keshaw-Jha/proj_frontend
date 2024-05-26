@@ -2,6 +2,7 @@ import { useState } from "react";
 import { SignIn } from "../../../model/HomeformData";
 
 import { logInUser, signInUser } from "../../../api/logIn-ep";
+import AppToast from "../../../utils/AppToast";
 
 export const useLogInPage = () => {
   const [isUser, setIsUser] = useState(true);
@@ -38,7 +39,9 @@ export const useLogInPage = () => {
             email: tempUserObj.email,
             password: tempUserObj.password,
           })
-        : await signInUser(tempUserObj);
+        : await signInUser(tempUserObj).then(() =>
+            AppToast.success("User logged in!")
+          );
       console.log("result", result);
       setLoggedIn(true);
     }

@@ -4,6 +4,7 @@ import { HomeFormData } from "../../../model/HomeformData";
 import { handleEntryExit } from "../../../api/api-ep";
 import { useSocket } from "../../../context/DashboardContext";
 import { getSettings } from "../../../api/admin-api-ep";
+import AppToast from "../../../utils/AppToast";
 
 export interface UserSettings {
   [key: string]: number;
@@ -68,10 +69,15 @@ const useQrScanner = () => {
   const allowEntryExit = async () => {
     handleEntryExit(ticketDetails)
       .then((data) => {
+        AppToast.success(
+          `User , ${ticketDetails.exitAt ? "Exit now" : "Welcome In"}`
+        );
+        setTicketDetails({} as HomeFormData);
         console.log("this", data);
       })
       .catch((err) => {
         console.log(err);
+        AppToast.error();
       });
     await queryClient.refetchQueries({
       queryKey: ["/getAllTickets"],
@@ -87,6 +93,10 @@ const useQrScanner = () => {
       setAllowDisabled(true);
     } else setAllowDisabled(false);
   }, [dashBoardStats, userSettings, ticketDetails]);
+
+  useEffect(() => {
+    if (allowDisabled) AppToast.warn("Entry limit exceeded");
+  }, [allowDisabled]);
 
   return {
     handleQrScan,

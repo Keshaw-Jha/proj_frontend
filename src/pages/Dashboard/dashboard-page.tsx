@@ -37,11 +37,11 @@ const DashboardPage = () => {
               icon={<ExitToAppIcon className="!text-8xl" />}
             />
           </div>
-          <div className="h-full grid lg:grid-cols-2 grid-cols-1 gap-4">
-            <div className="min-h-[200px]">
+          <div className="h-full grid xl:grid-cols-2 grid-cols-1 gap-4">
+            <div className="min-h-[200px] max-h-[500px]">
               <LineChartComponent />
             </div>
-            <div>
+            <div className="flex-1">
               <DoughnutChart dashBoardStats={dashBoardStats} />
             </div>
           </div>
