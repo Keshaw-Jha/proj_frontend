@@ -3,7 +3,7 @@ const Footer = () => {
     <div
       className="z-10 p-4 text-[#FFFFFF] bg-[#00224D] font-semibold text-center sticky"
       style={{ fontFamily: "'Pixelify Sans', sans-serif" }}>
-      Made with ❤️ @Chengra-Mengra-2024
+      Made with ❤️ @ Keshaw-2024
     </div>
   );
 };
